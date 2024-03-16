@@ -1,0 +1,19 @@
+{% load static tailwind_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    {% tailwind_css %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <title>{% block title %}Home{% endblock %}</title>
+  </head>
+  <body>
+
+    {% include 'global/navbar.html' %}
+
+    {% block content %}
+    {% endblock %}
+
+  </body>
+</html>

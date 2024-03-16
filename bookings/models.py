@@ -10,11 +10,20 @@ class Username(models.Model):
     def __str__(self):
         return self.username
 
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='category_images/', blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
 class Book(models.Model):
     title = models.CharField(max_length=100)
-    description = models.TextField(blank =True)
-    author = models.CharField(max_length=100, blank =True)
-    publication_year = models.PositiveIntegerField(blank =True)
+    description = models.TextField(blank =True, null=True)
+    author = models.CharField(max_length=100, blank =True, null=True)
+    publication_year = models.PositiveIntegerField(blank =True, null=True)
+    image = models.ImageField(upload_to='book_images/', blank=True, null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='books', blank=True, null=True)
 
     def __str__(self):
         return self.title
